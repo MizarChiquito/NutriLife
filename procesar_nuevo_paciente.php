@@ -7,6 +7,7 @@ require_once 'conexion.php';
 global $pdo;
 
 // 2. RECEPCIÓN, VALIDACIÓN Y SANITIZACIÓN DE DATOS
+
 // 2.1 Verificar si la solicitud es POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     die("Acceso no autorizado.");
@@ -17,11 +18,12 @@ $primerNombre = trim(htmlspecialchars($_POST['primerNombre'] ?? ''));
 $apellido     = trim(htmlspecialchars($_POST['apellido'] ?? ''));
 $email        = trim(htmlspecialchars($_POST['email'] ?? ''));
 $password     = $_POST['password'] ?? '';
-$rol_nombre   = trim(htmlspecialchars($_POST['rol'] ?? ''));
+
+$rol_nombre   = trim($_POST['rol'] ?? '');
 
 // 2.3 Validación de campos obligatorios
-if (empty($primerNombre) || empty($apellido) || empty($email) || empty($password) || empty($rol_nombre)) {
-    die("<h1>❌ Error de Validación</h1><p>Todos los campos son obligatorios.</p>");
+if (empty($primerNombre) || empty($apellido) || empty($email) || empty($password) || $rol_nombre !== 'Paciente') {
+    die("<h1>❌ Error de Validación</h1><p>Datos faltantes o error de rol. Solo puede registrar Pacientes</p>");
 }
 
 // 2.4 Validación de Email (Formato)
@@ -50,14 +52,13 @@ if ($stmt_check_email->rowCount() > 0) {
 $password_hash_seguro = password_hash($password, PASSWORD_DEFAULT);
 
 // 5. ASIGNACIÓN DEL ROL (Mapeo de Nombre a ID)
-$sql_rol = "SELECT id FROM roles WHERE name = :rol_nombre";
+$sql_rol = "SELECT id FROM roles WHERE name = 'paciente'";
 $stmt_rol = $pdo->prepare($sql_rol);
-$stmt_rol->bindParam(':rol_nombre', $rol_nombre);
 $stmt_rol->execute();
 $role = $stmt_rol->fetch(PDO::FETCH_ASSOC);
 
 if (!$role) {
-    die("<h1>❌ Error de Rol</h1><p>El rol de usuario seleccionado no es válido.</p>");
+    die("<h1>❌ Error de Rol</h1><p>El rol paciente no exite en la base de datos.</p>");
 }
 
 $role_id = $role['id'];
@@ -78,10 +79,17 @@ $stmt_insert->bindParam(':role_id', $role_id, PDO::PARAM_INT);
 
 try {
     $stmt_insert->execute();
-    echo "<h1>✅ Registro Exitoso!</h1>";
-    echo "<p>El usuario <strong>$primerNombre $apellido</strong> ha sido registrado como <strong>$rol_nombre</strong>.</p>";
+
+    // REDIRECCIÓN CON NOTIFICACIÓN DE ÉXITO (PRG)
+    // El script redirige al Nutriólogo de vuelta a la lista de pacientes con el nombre en la URL.
+    $mensaje_exito = "Paciente " . urlencode($primerNombre . " " . $apellido) . " registrado con exito.";
+    
+    header("Location: nutriologo_mis_pacientes.html?status=success&msg=" . $mensaje_exito);
 
 } catch (PDOException $e) {
-    die("<h1>❌ Error al Registrar Usuario</h1><p>Ocurrió un error inesperado al guardar los datos: " . $e->getMessage() . "</p>");
+    // Si hay error, redirigir con mensaje de error (opcional)
+    $mensaje_error = "Error al registrar: " . urlencode($e->getMessage());
+    header("Location: nutriologo_mis_pacientes.html?status=error&msg=" . $mensaje_error);
+    exit();
 }
 ?>
