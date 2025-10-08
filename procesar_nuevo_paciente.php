@@ -4,6 +4,8 @@
 
 require_once 'conexion.php';
 
+global $pdo;
+
 // 2. RECEPCIÓN, VALIDACIÓN Y SANITIZACIÓN DE DATOS
 
 // 2.1 Verificar si la solicitud es POST
