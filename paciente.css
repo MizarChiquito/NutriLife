@@ -1,0 +1,90 @@
+body {
+    min-height: 100vh;
+    background-color: lightsteelblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    padding-top: 20px;
+}
+
+/* Estilos del Logo */
+h1 {
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 20px;
+    width: 100px;
+    height: 30px;
+    border: 5px solid greenyellow;
+    background-color: #004d40;
+    border-style: dashed;
+    border-radius: 40px;
+    background: linear-gradient(180deg, White 15%, plum 50%, navy 75%);
+    -webkit-text-stroke: 2px black;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+/* === CONTENEDOR PRINCIPAL DEL DASHBOARD === */
+#dashboard-container {
+    
+    width: 700px; /* Un poco más ancho para el dashboard */
+    max-width: 95%;
+    background-color: #f0f0f0;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Centra el texto y los títulos del dashboard */
+}
+
+/*  ESTILOS ESPECÍFICOS PARA EL PACIENTE  */
+
+/* Título de Bienvenida */
+h2 {
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    color: #004d40; /* Verde oscuro del logo */
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+}
+
+/* Estilo para las tarjetas de navegación */
+.card-menu {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas bajen en pantallas pequeñas */
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 200px; /* Ancho fijo para las tarjetas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none; /* Quita el subrayado del enlace */
+    color: #004d40;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    color: navy;
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #666;
+    font-weight: normal;
+}

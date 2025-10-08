@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Formulario de registro</title>
+    <link rel="stylesheet" href="Registro.css"> <script>
+    function validarFormulario(event) {
+        const password = document.getElementById('password').value;
+        if (password.length < 8) { // Ejemplo de validación mínima
+            alert('La contraseña debe tener al menos 8 caracteres.');
+            event.preventDefault(); // Detiene el envío si la validación falla
+        }
+        // Aquí irían más validaciones de JS (email, etc.) chamba pa diego
+    }
+</script>
+</head>
+
+<body>
+<h1><strong>FOOD-RE</strong></h1>
+
+<div id="form-container">
+    <p class ="a">Registro de usuario</p>
+
+    <form method="post" action="procesar_registro.php" autocomplete="on" onsubmit="validarFormulario(event)">
+        <p><label>Primer nombre:
+            <input type="text" id="primerNombre" name="primerNombre" required placeholder="Primer nombre"/>
+        </label></p>
+
+        <p><label>Apellido:
+            <input type="text" id="apellido" name="apellido" required placeholder="Apellido" />
+        </label></p>
+
+        <p><label>Email:
+            <input type="email" id="email" name="email" required placeholder="nombre@dominio.com" />
+        </label></p>
+
+        <p><label for="password">Contraseña:
+            <input type="password" id="password" name="password" maxlength="12"
+                   placeholder="Máximo 12 caracteres" required>
+        </label></p>
+
+        <p><label for="Rol">Rol de usuario:
+            <input type="text" id="Rol" name="rol" required
+                   placeholder="Seleccione un rol" list="Roles" />
+            <datalist id="Roles">
+                <option value="Nutriologo">
+                <option value="Paciente">
+            </datalist>
+        </label></p>
+
+        <p style="text-align: center; margin-top: 20px;">
+            <input type="submit" value="Enviar" />
+            <input type="reset" value="Borrar" />
+        </p>
+    </form>
+</div>
+</body>
+</html>

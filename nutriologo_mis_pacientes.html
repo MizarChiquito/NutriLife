@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Gestión de Pacientes | Nutriólogo FOOD-RE</title>
+    <link rel="stylesheet" href="Nutriologo_mis_pacientes.css">
+    <style>
+
+        /* Contenedor principal para la lista */
+        #list-container {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        /* Estilos del botón de acción */
+        #add-patient-button {
+            background-color: #004d40; /* Verde oscuro */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: inline-block; /* Permite que sea un botón de ancho fijo */
+            text-decoration: none; /* Si se usa un <a> */
+            transition: background-color 0.3s;
+        }
+
+        #add-patient-button:hover {
+            background-color: #00796b; /* Verde ligeramente más claro al pasar el ratón */
+        }
+
+        /* Estilos básicos para la tabla de pacientes */
+        .patient-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .patient-table th, .patient-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .patient-table th {
+            background-color: #e0e0e0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .patient-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+    </style>
+</head>
+
+<body>
+<h1><strong>FOOD-RE</strong></h1>
+
+<div id="dashboard-container">
+
+    <h2>Panel de Gestión | Nutriólogo [Nombre]</h2>
+    <h2 style="color: #004d40;">Gestión de Pacientes</h2>
+
+    <a href="nutriologo_agregar_pacientes.html" id="add-patient-button">
+        ➕ Agregar Nuevo Paciente
+    </a>
+
+    <div id="list-container">
+
+        <table class="patient-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Completo</th>
+                <th>Email</th>
+                <th>Progreso</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>101</td>
+                <td>Ana Gómez Pérez</td>
+                <td>ana.gomez@mail.com</td>
+                <td>+3kg / Ver Progreso</td>
+                <td><a href="#">Ver Plan</a> | <a href="#">Editar</a></td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Carlos Ruiz Díaz</td>
+                <td>carlos.rd@mail.com</td>
+                <td>-5kg / Ver Progreso</td>
+                <td><a href="#">Ver Plan</a> | <a href="#">Editar</a></td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Sofía Hernández</td>
+                <td>sofia.h@mail.com</td>
+                <td>Sin datos</td>
+                <td><a href="#">Crear Plan</a> | <a href="#">Editar</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+</body>
+</html>
