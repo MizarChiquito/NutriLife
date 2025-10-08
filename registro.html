@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <title>Formulario de registro</title>
@@ -22,24 +22,24 @@
     <p class ="a">Registro de usuario</p>
 
     <form method="post" action="procesar_registro.php" autocomplete="on" onsubmit="validarFormulario(event)">
-        <p><label>Primer nombre:
+        <p><label>Ingresa tu/s nombre/s:
             <input type="text" id="primerNombre" name="primerNombre" required placeholder="Primer nombre"/>
         </label></p>
 
-        <p><label>Apellido:
+        <p><label>Ingresa tus apellidos:
             <input type="text" id="apellido" name="apellido" required placeholder="Apellido" />
         </label></p>
 
-        <p><label>Email:
+        <p><label>Ingresa tu correo electrónico:
             <input type="email" id="email" name="email" required placeholder="nombre@dominio.com" />
         </label></p>
 
-        <p><label for="password">Contraseña:
+        <p><label for="password">Ingresa contraseña:
             <input type="password" id="password" name="password" maxlength="12"
                    placeholder="Máximo 12 caracteres" required>
         </label></p>
 
-        <p><label for="Rol">Rol de usuario:
+        <p><label for="Rol">¿Qué clase de usuario eres?
             <input type="text" id="Rol" name="rol" required
                    placeholder="Seleccione un rol" list="Roles" />
             <datalist id="Roles">
