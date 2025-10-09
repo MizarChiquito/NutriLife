@@ -21,8 +21,11 @@ $password     = $_POST['password'] ?? '';
 
 $rol_nombre   = trim($_POST['rol'] ?? '');
 
+$peso         = $_POST['peso'] ?? '';
+$altura       = $_POST['altura'] ?? '';
+
 // 2.3 Validación de campos obligatorios
-if (empty($primerNombre) || empty($apellido) || empty($email) || empty($password) || $rol_nombre !== 'Paciente') {
+if (empty($primerNombre) || empty($apellido) || empty($email) || empty($password) || empty($peso) || empty($altura) || $rol_nombre !== 'Paciente') {
     die("<h1>❌ Error de Validación</h1><p>Datos faltantes o error de rol. Solo puede registrar Pacientes</p>");
 }
 
@@ -35,6 +38,20 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 if (strlen($password) < 8 || strlen($password) > 12) {
     die("<h1>❌ Error de Validación</h1><p>La contraseña debe tener entre 8 y 12 caracteres.</p>");
 }
+
+// [NUEVA VALIDACIÓN: RANGOS DE PESO/ALTURA]
+$peso_f = floatval($peso);
+$altura_f = floatval($altura);
+
+if ($peso_f < 30 || $peso_f > 300) {
+    die("<h1>❌ Error de Validación</h1><p>El peso ingresado está fuera del rango (30-300 kg).</p>");
+}
+if ($altura_f < 0.5 || $altura_f > 3.0) {
+    die("<h1>❌ Error de Validación</h1><p>La altura ingresada está fuera del rango (0.50-3.00 m).</p>");
+}
+// Las variables $peso_f y $altura_f ya están listas para la inserción
+$peso = $peso_f;
+$altura = $altura_f;
 
 // 3. VERIFICAR UNICIDAD DEL EMAIL
 
@@ -65,8 +82,8 @@ $role_id = $role['id'];
 
 // 6. INSERCIÓN FINAL DEL USUARIO EN LA BD
 
-$sql_insert = "INSERT INTO users (first_name, last_name, email, password_hash, role_id) 
-               VALUES (:primerNombre, :apellido, :email, :password_hash, :role_id)";
+$sql_insert = "INSERT INTO users (first_name, last_name, email, password_hash, role_id, weight, height) 
+               VALUES (:primerNombre, :apellido, :email, :password_hash, :role_id, :weight, :height)";
 
 $stmt_insert = $pdo->prepare($sql_insert);
 
@@ -76,6 +93,9 @@ $stmt_insert->bindParam(':apellido', $apellido);
 $stmt_insert->bindParam(':email', $email);
 $stmt_insert->bindParam(':password_hash', $password_hash_seguro);
 $stmt_insert->bindParam(':role_id', $role_id, PDO::PARAM_INT);
+
+$stmt_insert->bindParam(':weight', $peso);
+$stmt_insert->bindParam(':height', $altura);
 
 try {
     $stmt_insert->execute();
