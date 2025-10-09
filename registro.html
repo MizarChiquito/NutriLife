@@ -3,15 +3,52 @@
 <head>
     <meta charset="utf-8">
     <title>Formulario de registro</title>
-    <link rel="stylesheet" href="Registro.css"> <script>
+    <link rel="stylesheet" href="Registro.css">
+    <script>
     function validarFormulario(event) {
+        // Obtenemos los valores de los campos
+        const primerNombre = document.getElementById('primerNombre').value.trim();
+        const apellido = document.getElementById('apellido').value.trim();
+        const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value;
-        if (password.length < 8) { // Ejemplo de validación mínima
-            alert('La contraseña debe tener al menos 8 caracteres.');
-            event.preventDefault(); // Detiene el envío si la validación falla
+        // Asegúrate de usar el ID correcto para el campo de Rol (en tu HTML es 'Rol')
+        const rol = document.getElementById('Rol').value.trim();
+
+        // --- 1. Validaciones de Campos Vacíos ---
+        if (primerNombre === '' || apellido === '' || email === '' || password === '' || rol === '' || rol === 'Seleccione un rol') {
+            alert('Todos los campos son obligatorios.');
+            event.preventDefault(); // Detiene el envío
+            return false;           // Detiene la función (CLAVE)
         }
-        // Aquí irían más validaciones de JS (email, etc.) chamba pa diego
+
+        // --- 2. Validación de Contraseña (Largo) ---
+        // Sintaxis corregida: se debe usar '||' para OR
+        if (password.length < 8 || password.length > 12) {
+            alert('La contraseña debe tener entre 8 y 12 caracteres.');
+            event.preventDefault();
+            return false;
+        }
+
+        // --- 3. Validación de Contraseña (Complejidad) ---
+        const complejidadRegex = /^(?=.*[0-9])(?=.*[A-Z]).*$/;
+        if (!complejidadRegex.test(password)) {
+            alert('La contraseña debe contener al menos una letra mayúscula y un número.');
+            event.preventDefault();
+            return false;
+        }
+
+        // --- 4. Validación de Email (Formato) ---
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('El formato del correo electrónico no es válido.');
+            event.preventDefault();
+            return false;
+        }
+
+        // Si la función llega hasta aquí, significa que todas las validaciones pasaron.
+        return true;
     }
+
 </script>
 </head>
 
@@ -23,7 +60,7 @@
 
     <form method="post" action="procesar_registro.php" autocomplete="on" onsubmit="validarFormulario(event)">
         <p><label>Ingresa tu/s nombre/s:
-            <input type="text" id="primerNombre" name="primerNombre" required placeholder="Primer nombre"/>
+            <input type="text" id="primerNombre" name="primerNombre" required placeholder="primerNombre"/>
         </label></p>
 
         <p><label>Ingresa tus apellidos:
