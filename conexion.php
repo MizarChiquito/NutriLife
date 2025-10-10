@@ -1,30 +1,16 @@
 <?php
-// Configuración de errores
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// Configuración de la Base de Datos (MySQL)
-$host = "localhost";
-$port = "3306";
-$db   = "foodre_db";        
-$user = "root";
-$pass = "3294";            
-
-// Variable $pdo para usar en otros scripts. Inicialmente nula.
-$pdo = null;
+$host = '127.0.0.1';
+$port = '3307'; // Cambia a 3307 si XAMPP muestra ese puerto
+$dbname = 'foodre_db';
+$username = 'root';
+$password = ''; // XAMPP usa usuario root sin contraseña
 
 try {
-    // Crear conexión PDO para MySQL
-    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=utf8", $user, $pass);
-
-    // Configurar PDO para lanzar excepciones si ocurre un error
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+    echo "<h2 style='color:green;'>✅ Conexión exitosa con la base de datos foodre_db</h2>";
 } catch (PDOException $e) {
-    // Si falla la conexión, muestra un error y detiene la ejecución.
-    die("<h1>❌ Error de Conexión a la Base de Datos</h1>
-         <p>Verifica tu configuración de MySQL o que tu servidor esté activo: " . $e->getMessage() . "</p>");
+    echo "<h1 style='color:red;'>❌ Error de Conexión a la Base de Datos</h1>";
+    echo "<p>Detalles: " . $e->getMessage() . "</p>";
 }
-// Si la conexión es exitosa, el script termina aquí y la variable $pdo ya está definida.
 ?>
