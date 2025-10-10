@@ -78,10 +78,17 @@ $stmt_insert->bindParam(':role_id', $role_id, PDO::PARAM_INT);
 
 try {
     $stmt_insert->execute();
-    echo "<h1>✅ Registro Exitoso!</h1>";
+
+    // 1. Crear un mensaje de éxito para mostrar en el login
+    $msg = urlencode("✅ ¡Registro Exitoso! Ahora puedes iniciar sesión.");
+
+    // 2. Redirigir al usuario a login.html
+    header("Location: login.html?status=success&msg=" . $msg);
+    exit(); // Detiene el script después de la redirección
+
     echo "<p>El usuario <strong>$primerNombre $apellido</strong> ha sido registrado como <strong>$rol_nombre</strong>.</p>";
 
 } catch (PDOException $e) {
-    die("<h1>❌ Error al Registrar Usuario</h1><p>Ocurrió un error inesperado al guardar los datos: " . $e->getMessage() . "</p>");
+    die("<h1>❌ Error al Registrar Usuario</h1><p>Ocurrió un error inesperado al guardar los datos: " . $e->getMessage() . "</p>");
 }
 ?>
