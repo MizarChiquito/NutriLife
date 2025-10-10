@@ -86,9 +86,7 @@ try {
     header("Location: login.html?status=success&msg=" . $msg);
     exit(); // Detiene el script después de la redirección
 
-    echo "<p>El usuario <strong>$primerNombre $apellido</strong> ha sido registrado como <strong>$rol_nombre</strong>.</p>";
-
 } catch (PDOException $e) {
-    die("<h1>❌ Error al Registrar Usuario</h1><p>Ocurrió un error inesperado al guardar los datos: " . $e->getMessage() . "</p>");
+    die("<h1>❌ Error al Registrar Usuario</h1><p>Ocurrió un error inesperado al guardar los datos: " . $e->getMessage() . "</p>");
 }
 ?>
