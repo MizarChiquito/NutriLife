@@ -13,7 +13,15 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['role'])) {
     exit();
 }
 
-// 2. Cierre de Sesión Automático (Inactividad)
+// 2. EXCEPCIÓN: Si el rol es Administrador, saltamos la verificación de inactividad.
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'Administrador') {
+    // Si es Administrador, solo actualizamos la actividad para evitar problemas de sesión de PHP
+    $_SESSION['LAST_ACTIVITY'] = time();
+    // Salimos del script, SIN verificar la inactividad.
+    return; // Usamos 'return' para salir sin ejecutar el resto del código de inactividad.
+}
+
+// 3. Cierre de Sesión Automático (Inactividad)
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $expire_time)) {
     session_unset();
     session_destroy();
@@ -22,6 +30,6 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
     exit();
 }
 
-// 3. Actualizar la actividad (para mantener la sesión viva)
+// 4. Actualizar la actividad (para mantener la sesión viva)
 $_SESSION['LAST_ACTIVITY'] = time();
 ?>
