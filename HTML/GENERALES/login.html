@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Iniciar Sesión | NUTRILIFE</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../../CSS/login.css">
     <script>
         function validarLogin(event) {
             const email = document.getElementById('email').value.trim();
@@ -27,7 +27,7 @@
 
     <p id="error-message" style="color: red; font-weight: bold; text-align: center;"></p>
 
-    <form method="post" action="procesar_login.php" onsubmit="return validarLogin(event)">
+    <form method="post" action="../../PHP/procesar_login.php" onsubmit="return validarLogin(event)">
 
         <p><label>Email:
             <input type="email" id="email" name="email" required placeholder="nombre@dominio.com" />
