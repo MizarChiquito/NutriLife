@@ -84,6 +84,16 @@ global$status; global$status; <!DOCTYPE html>
             <label for="email">Email:</label>
             <input type="email" id="email" name="email"
                    value="<?php echo htmlspecialchars($user_data['email'] ?? ''); ?>" placeholder="tu@correo.com" disabled required />
+
+            <hr style="margin: 25px 0; border-top: 1px solid #ddd;">
+
+            <p style="text-align: center;">
+                ¿Desea modificar sus datos de salud (Peso, Altura, Alergias)?
+            </p>
+
+            <a href="paciente_perfil_salud_vista.php" class="btn btn-secondary-link">
+                Ir a Modificar Datos de Salud
+            </a>
         </div>
 
         <hr style="margin: 20px 0;">
