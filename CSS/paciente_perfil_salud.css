@@ -112,3 +112,28 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #145a3a;
 }
+
+/* Estilo base para el botón de Cancelar/Eliminar */
+#btn-cancelar {
+    background-color: #dc3545 !important; /* Rojo */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#btn-eliminar {
+    background-color: #ffc107; /* Amarillo o color de advertencia */
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#btn-eliminar:hover {
+    background-color: #e0a800;
+}

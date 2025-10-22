@@ -92,3 +92,28 @@ input[type="email"] {
     color: #721c24;
     border: 1px solid #f5c6cb;
 }
+
+/* --- Botón Secundario (para navegación) --- */
+.btn-secondary-link {
+    /* Basado en el estilo del botón principal */
+    display: inline-block;
+    width: calc(100% - 20px); /* Ajuste para que se vea bien */
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #388e3c; /* Borde verde */
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    /* Estilos de color y texto */
+    background-color: #ffffff; /* Fondo blanco */
+    color: #388e3c; /* Texto verde */
+    text-decoration: none; /* Quitar el subrayado del enlace */
+    text-align: center;
+}
+
+.btn-secondary-link:hover {
+    background-color: #e8f5e9; /* Un poco de verde muy claro al pasar el ratón */
+    color: #2e7d32;
+}

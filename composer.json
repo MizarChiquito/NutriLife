@@ -1,0 +1,18 @@
+{
+    "name": "h4k48/nutri-life",
+    "description": "Proyecto Nutrilife",
+    "autoload": {
+        "psr-4": {
+            "H4k48\\NutriLife\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Deadgon48",
+            "email": "h4k48k@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^7.0"
+    }
+}
