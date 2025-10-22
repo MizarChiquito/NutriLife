@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Historial de Progreso | NutriLife</title>
+    <link rel="stylesheet" href="../../CSS/Nutriologo_mis_pacientes.css"> <style>
+    .progress-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .progress-table th, .progress-table td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    .progress-table th { background-color: #e0e0e0; font-weight: bold; }
+    .progress-table tr:nth-child(even) { background-color: #f9f9f9; }
+</style>
+</head>
+<body>
+<h1><strong>NUTRILIFE</strong></h1>
+
+<div id="dashboard-container">
+    <h2 id="title-progreso">Historial de Progreso | Paciente [Nombre]</h2>
+
+    <a href="#" id="btn-nuevo-progreso" style="display: none; background-color: #00796b; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+        ➕ Registrar Nuevo Progreso
+    </a>
+
+    <div id="progress-list-container">
+        <table class="progress-table">
+            <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Peso (kg)</th>
+                <th>Altura (m)</th>
+                <th>Cambio Peso</th>
+            </tr>
+            </thead>
+            <tbody id="progress-table-body">
+            <tr><td colspan="4" style="text-align: center;">Cargando historial...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p style="margin-top: 20px;"><a href="#" onclick="history.back(); return false;">&larr; Volver</a></p>
+</div>
+</body>
+</html>

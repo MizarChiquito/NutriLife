@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Registrar Progreso | NutriLife</title>
+    <link rel="stylesheet" href="../../CSS/Nutriologo_mis_pacientes.css">
+    <style>
+        #form-container { width: 450px; max-width: 90%; background-color: #f0f0f0; padding: 20px 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); margin-top: 20px; }
+        input[type="number"], input[type="date"] { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        input[type="submit"] { background-color: #004d40; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px; font-weight: bold; }
+    </style>
+    <script>
+        function validarProgreso(event) {
+            const peso = document.getElementById('nuevoPeso').value.trim();
+            const altura = document.getElementById('nuevaAltura').value.trim();
+            const fecha = document.getElementById('fecha').value.trim();
+
+            if (peso === '' || altura === '' || fecha === '') {
+                alert('Todos los campos de progreso son obligatorios.');
+                event.preventDefault(); return false;
+            }
+
+            const peso_f = parseFloat(peso);
+            const altura_f = parseFloat(altura);
+
+            if (isNaN(peso_f) || peso_f < 30 || peso_f > 300) {
+                alert('El Nuevo Peso debe ser un número válido entre 30 y 300 kg.');
+                event.preventDefault(); return false;
+            }
+
+            if (isNaN(altura_f) || altura_f < 0.50 || altura_f > 3.00) {
+                alert('La Nueva Altura debe ser un número válido entre 0.50 y 3.00 metros.');
+                event.preventDefault(); return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+<h1><strong>NUTRILIFE</strong></h1>
+
+<div id="form-container">
+    <h2 style="color: #004d40; text-align: center;">Registrar Progreso del Paciente: [Nombre Paciente]</h2>
+
+    <form method="post" action="../../PHP/procesar_nuevo_progreso.php" onsubmit="return validarProgreso(event)">
+
+        <input type="hidden" name="paciente_id" value="101" /> <p><label>Fecha de Medición:
+        <input type="date" id="fecha" name="fecha" required max="<?php echo date('Y-m-d'); ?>" />
+    </label></p>
+
+        <p><label>Nuevo Peso (kg):
+            <input type="number" id="nuevoPeso" name="nuevoPeso" required step="0.01" min="30" max="300"
+                   placeholder="Peso actual del paciente"/>
+        </label></p>
+
+        <p><label>Nueva Altura (m):
+            <input type="number" id="nuevaAltura" name="nuevaAltura" required step="0.01" min="0.50" max="3.00"
+                   placeholder="Altura actual del paciente"/>
+        </label></p>
+
+        <p style="text-align: center; margin-top: 20px;">
+            <input type="submit" value="Guardar Progreso" />
+            <a href="nutriologo_mis_pacientes.html" style="text-decoration: none; color: #333; margin-left: 15px;">Cancelar</a>
+        </p>
+    </form>
+</div>
+</body>
+</html>
