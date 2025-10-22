@@ -1,7 +1,7 @@
 <?php
 // admin_dashboard.php
 // Este script es el guardián del Administrador.
-// NOTA: 'check_session.php' manejará la excepción de la expiración para este rol.
+// 'check_session.php' manejará la excepción de la expiración para este rol.
 
 require_once 'check_session.php';
 
@@ -9,7 +9,7 @@ require_once 'check_session.php';
 // Aunque check_session.php ya lo verifica, este es un doble chequeo de seguridad.
 if ($_SESSION['role'] !== 'Administrador') {
     // Redirige si el usuario no es un Administrador
-    header("Location: login.html?status=error&msg=" . urlencode("Acceso denegado. Este área es solo para Administradores."));
+    header("Location: ../HTML/GENERALES/login.html?status=error&msg=" . urlencode("Acceso denegado. Este área es solo para Administradores."));
     exit();
 }
 

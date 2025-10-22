@@ -39,7 +39,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 // 6. Validación de Credenciales (verifica si el hash coincide)
 if (!$user || !password_verify($password, $user['password_hash'])) {
     $msg = urlencode("Credenciales incorrectas.");
-    header("Location: ../HTML/GENERALES/login.htmll?status=error&msg=" . $msg);
+    header("Location: ../HTML/GENERALES/login.html?status=error&msg=" . $msg);
     exit();
 }
 

@@ -15,7 +15,6 @@ if ($_SESSION['role'] !== 'Nutriologo') {
 $user_name = htmlspecialchars($_SESSION['user_name'] ?? 'Usuario');
 $logout_link = '<a href="logout.php" style="color: #007bff; text-decoration: none; font-weight: bold;">Cerrar Sesión</a>';
 
-
 // 3. Cargar y procesar el HTML (Usando el archivo correcto)
 $html_content = file_get_contents('../HTML/NUTRIOLOGO/nutriologo.html');
 
@@ -30,5 +29,4 @@ $html_content = str_replace('<nav id="logout-area" style="text-align: right; mar
 
 // 4. Mostrar el HTML modificado
 echo $html_content;
-
 ?>
