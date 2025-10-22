@@ -5,23 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6097de84-7984-4230-bb9f-ae407cb4edc3" name="Changes" comment="Codigo de cierre automatico de sesion">
-      <change afterPath="$PROJECT_DIR$/.idea/NutriLife.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin_dashboard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/check_session.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nutriologo_dashboard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paciente_dashboard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/procesar_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/food-re.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paciente.html" beforeDir="false" afterPath="$PROJECT_DIR$/Paciente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administrador.html" beforeDir="false" afterPath="$PROJECT_DIR$/administrador.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nutriologo.html" beforeDir="false" afterPath="$PROJECT_DIR$/nutriologo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CSS/recuperar_contraseña.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PHP/recuperar_contrasena_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,17 +17,40 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="PHP File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MizarChiquito/NutriLife.git",
+    "accountId": "2c5143ef-fcc3-4ab8-9bae-2687a424f526"
+  }
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JavaScript Debug.nutriologo.html.executor": "Run",
-    "git-widget-placeholder": "Logout__DiegoF",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "git-widget-placeholder": "recuperar__contra",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2025.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -51,6 +60,17 @@
 }]]></component>
   <component name="TaskManager">
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Codigo de cierre automatico de sesion" />
