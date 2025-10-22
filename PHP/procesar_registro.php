@@ -83,7 +83,7 @@ try {
     $msg = urlencode("✅ ¡Registro Exitoso! Ahora puedes iniciar sesión.");
 
     // 2. Redirigir al usuario a login.html
-    header("Location: login.html?status=success&msg=" . $msg);
+    header("Location: ../HTML/GENERALES/login.html?status=success&msg=" . $msg);
     exit(); // Detiene el script después de la redirección
 
 } catch (PDOException $e) {
