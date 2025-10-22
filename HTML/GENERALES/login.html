@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Iniciar Sesión | NUTRILIFE</title>
-    <link rel="stylesheet" href="../../CSS/login.css">
+    <link rel="stylesheet" href="login.css">
     <script>
         function validarLogin(event) {
             const email = document.getElementById('email').value.trim();
@@ -16,6 +16,18 @@
             }
             return true;
         }
+
+        function toggleRecoveryForm() {
+            var form = document.getElementById('recover-form');
+            var link = document.getElementById('recover-toggle');
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block';
+                link.textContent = 'Cancelar solicitud';
+            } else {
+                form.style.display = 'none';
+                link.textContent = '¿Olvidaste tu contraseña?';
+            }
+        }
     </script>
 </head>
 
@@ -27,7 +39,7 @@
 
     <p id="error-message" style="color: red; font-weight: bold; text-align: center;"></p>
 
-    <form method="post" action="../../PHP/procesar_login.php" onsubmit="return validarLogin(event)">
+    <form method="post" action="procesar_login.php" onsubmit="return validarLogin(event)">
 
         <p><label>Email:
             <input type="email" id="email" name="email" required placeholder="nombre@dominio.com" />
@@ -41,6 +53,21 @@
             <input type="submit" value="Acceder" />
         </p>
     </form>
+
+    <a href="#" id="recover-toggle" onclick="toggleRecoveryForm()">¿Olvidaste tu contraseña?</a>
+
+    <form method="post" action="../../../../../../Users/h4k48/Downloads/codigos%20nutrilife/solicitar_recuperacion.php" id="recover-form" style="display: none;">
+        <h3>Recuperar Contraseña</h3>
+        <p style="font-size: 0.8em; margin-bottom: 10px;">Ingrese su email para recibir el enlace de restablecimiento.</p>
+
+        <p><label>Email de Cuenta:</label>
+            <input type="email" name="email" required /></p>
+
+        <p style="text-align: center;">
+            <input type="submit" value="Solicitar Enlace" style="background-color: #dc3545; color: white; padding: 8px 15px; border: none; cursor: pointer;" />
+        </p>
+    </form>
+
 </div>
 
 <script>
