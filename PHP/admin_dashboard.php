@@ -18,9 +18,8 @@ $user_name = htmlspecialchars($_SESSION['user_name'] ?? 'Usuario');
 // Estilo para el botón de Cerrar Sesión (color rojo/oscuro para el Admin)
 $logout_link = '<a href="logout.php" style="color: #c0392b; text-decoration: none; font-weight: bold;">Cerrar Sesión</a>';
 
-
 // 3. Cargar el contenido HTML
-$html_content = file_get_contents('administrador.html');
+$html_content = file_get_contents('../HTML/ADMINISTRADOR/administrador.html');
 
 // 4. Reemplazar Marcadores en el HTML
 

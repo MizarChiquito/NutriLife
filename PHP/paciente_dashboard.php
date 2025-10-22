@@ -7,7 +7,7 @@ require_once 'check_session.php';
 // 1. Verificar el Rol: Debe ser 'Paciente'
 if ($_SESSION['role'] !== 'Paciente') {
     // Si el usuario no es Paciente, redirige y finaliza.
-    header("Location: login.html?status=error&msg=" . urlencode("Acceso denegado. Este área es solo para Pacientes."));
+    header("Location: ../HTML/GENERALES/login.html?status=error&msg=" . urlencode("Acceso denegado. Este área es solo para Pacientes."));
     exit();
 }
 
@@ -17,7 +17,7 @@ $logout_link = '<a href="logout.php" style="color: #007bff; text-decoration: non
 
 
 // 3. Cargar y procesar el HTML (Usando el archivo correcto)
-$html_content = file_get_contents('paciente.html');
+$html_content = file_get_contents('../HTML/PACIENTE/paciente.html');
 
 // Inyectar el saludo al usuario en el H2 (usando el método de reemplazo de cadenas que establecimos)
 $new_title_h2 = "<h2>¡Bienvenido, Paciente {$user_name}!</h2>";

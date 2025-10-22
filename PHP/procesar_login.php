@@ -9,7 +9,7 @@ require_once 'conexion.php';
 // 2. Seguridad inicial: Verificar el metodo POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $msg = urlencode("Acceso no autorizado.");
-    header("Location: login.html?status=error&msg=" . $msg);
+    header("Location: ../HTML/GENERALES/login.html?status=error&msg=" . $msg);
     exit();
 }
 
@@ -20,7 +20,7 @@ $password = $_POST['password'] ?? '';
 // 4. VALIDACIÓN DE CAMPOS VACÍOS (Bloque faltante)
 if (empty($email) || empty($password)) {
     $msg = urlencode("Debe ingresar su correo electrónico y su contraseña.");
-    header("Location: login.html?status=error&msg=" . $msg);
+    header("Location: ../HTML/GENERALES/login.html?status=error&msg=" . $msg);
     exit();
 }
 
@@ -39,7 +39,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 // 6. Validación de Credenciales (verifica si el hash coincide)
 if (!$user || !password_verify($password, $user['password_hash'])) {
     $msg = urlencode("Credenciales incorrectas.");
-    header("Location: login.html?status=error&msg=" . $msg);
+    header("Location: ../HTML/GENERALES/login.htmll?status=error&msg=" . $msg);
     exit();
 }
 
@@ -63,7 +63,7 @@ switch ($user['role_name']) {
     default:
         session_unset(); session_destroy();
         $msg = urlencode("Rol no válido.");
-        header("Location: login.html?status=error&msg=" . $msg);
+        header("Location: ../HTML/GENERALES/login.html?status=error&msg=" . $msg);
         break;
 }
 exit();

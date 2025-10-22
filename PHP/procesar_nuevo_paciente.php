@@ -104,12 +104,12 @@ try {
     // El script redirige al Nutriólogo de vuelta a la lista de pacientes con el nombre en la URL.
     $mensaje_exito = "Paciente " . urlencode($primerNombre . " " . $apellido) . " registrado con exito.";
     
-    header("Location: nutriologo_mis_pacientes.html?status=success&msg=" . $mensaje_exito);
+    header("Location: ../HTML/NUTRIOLOGO/nutriologo_mis_pacientes.html?status=success&msg=" . $mensaje_exito);
 
 } catch (PDOException $e) {
     // Si hay error, redirigir con mensaje de error (opcional)
     $mensaje_error = "Error al registrar: " . urlencode($e->getMessage());
-    header("Location: nutriologo_mis_pacientes.html?status=error&msg=" . $mensaje_error);
+    header("Location: ../HTML/NUTRIOLOGO/nutriologo_mis_pacientes.html?status=error&msg=" . $mensaje_error);
     exit();
 }
 ?>

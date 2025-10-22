@@ -9,7 +9,7 @@ $expire_time = 3600;
 // 1. Redirección si NO hay sesión activa
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['role'])) {
     $msg = urlencode("Acceso denegado. Por favor, inicie sesión.");
-    header("Location: login.html?status=error&msg=" . $msg);
+    header("Location: ../HTML/GENERALES/login.html?status=error&msg=" . $msg);
     exit();
 }
 
@@ -26,7 +26,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
     session_unset();
     session_destroy();
     $msg = urlencode("Su sesión ha expirado por inactividad.");
-    header("Location: login.html?status=timeout&msg=" . $msg);
+    header("Location: ../HTML/GENERALES/login.html?status=timeout&msg=" . $msg);
     exit();
 }
 
