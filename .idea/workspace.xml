@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6097de84-7984-4230-bb9f-ae407cb4edc3" name="Changes" comment="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD" />
+    <list default="true" id="6097de84-7984-4230-bb9f-ae407cb4edc3" name="Changes" comment="Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena">
+      <change afterPath="$PROJECT_DIR$/HTML/GENERALES/historial_progreso.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HTML/NUTRIOLOGO/nutriologo_nuevo_progreso.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PHP/procesar_nuevo_progreso.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PHP/ver_progreso.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/NutriLife.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NutriLife.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -25,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="historial_Progreso_Pacientes" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,6 +52,12 @@
     &quot;accountId&quot;: &quot;2c5143ef-fcc3-4ab8-9bae-2687a424f526&quot;
   }
 }</component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+    </include_path>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -60,6 +76,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "historialProgresoV3",
+    "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -97,6 +114,7 @@
       <option name="presentableId" value="Default" />
       <updated>1761104888294</updated>
       <workItem from="1761104890017" duration="2580000" />
+      <workItem from="1761143172200" duration="612000" />
     </task>
     <task id="LOCAL-00002" summary="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD">
       <option name="closed" value="true" />
