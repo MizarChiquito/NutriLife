@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="6097de84-7984-4230-bb9f-ae407cb4edc3" name="Changes" comment="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD" />
     <list default="true" id="6097de84-7984-4230-bb9f-ae407cb4edc3" name="Changes" comment="Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena">
       <change afterPath="$PROJECT_DIR$/HTML/GENERALES/historial_progreso.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/HTML/NUTRIOLOGO/nutriologo_nuevo_progreso.html" afterDir="false" />
@@ -74,6 +75,7 @@
     "JavaScript Debug.nutriologo.html.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "historialProgresoV3",
     "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -114,7 +116,15 @@
       <workItem from="1761104890017" duration="2580000" />
       <workItem from="1761143172200" duration="612000" />
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD">
+      <option name="closed" value="true" />
+      <created>1761144873051</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761144873051</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,6 +144,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Codigo de cierre automatico de sesion" />
     <MESSAGE value="Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena" />
+    <MESSAGE value="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD" />
+    <option name="LAST_COMMIT_MESSAGE" value="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD" />
   </component>
 </project>
