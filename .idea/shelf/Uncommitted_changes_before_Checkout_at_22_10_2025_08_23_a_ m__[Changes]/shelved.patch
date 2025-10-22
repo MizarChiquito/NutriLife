@@ -1,0 +1,520 @@
+Index: HTML/NUTRIOLOGO/nutriologo.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta charset=\"utf-8\">\r\n    <title>Pagina de nutriologo</title>\r\n    <link rel=\"stylesheet\" href=\"Nutriologo.css\">\r\n\r\n</head>\r\n\r\n<body>\r\n<h1><strong>NUTRILIFE</strong></h1>\r\n\r\n<div id=\"dashboard-container\">\r\n\r\n    <h2 id=\"nutriologo-title\">¡Bienvenido!</h2>\r\n\r\n    <div class=\"card-menu\">\r\n\r\n        <a href=\"nutriologo_mis_pacientes.html\" class=\"card\">\r\n            <h3>\uD83D\uDC65 Mis Pacientes</h3>\r\n            <p>Agregar Pacientes, ver listado, historial, progreso y notas de todos los pacientes asignados.</p>\r\n        </a>\r\n\r\n        <a href=\"#\" class=\"card\">\r\n            <h3>\uD83D\uDCDD Crear/Editar Planes</h3>\r\n            <p>Diseñar, asignar y modificar dietas, objetivos calóricos y rutinas.</p>\r\n        </a>\r\n\r\n        <a href=\"#\" class=\"card\">\r\n            <h3>\uD83D\uDCC5 Agenda y Citas</h3>\r\n            <p>Ver disponibilidad, programar y confirmar consultas con pacientes.</p>\r\n        </a>\r\n\r\n        <a href=\"#\" class=\"card\">\r\n            <h3>\uD83D\uDCDA Biblioteca de Recetas</h3>\r\n            <p>Gestionar y agregar nuevas recetas, ingredientes y recursos educativos.</p>\r\n        </a>\r\n\r\n        <a href=\"#\" class=\"card\">\r\n            <h3>\uD83D\uDCE7 Mensajería</h3>\r\n            <p>Comunicación directa con los pacientes para resolver dudas rápidas.</p>\r\n        </a>\r\n\r\n    </div>\r\n\r\n    <nav id=\"logout-area\" style=\"text-align: right; margin-top: 20px;\"></nav>\r\n\r\n</div>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/HTML/NUTRIOLOGO/nutriologo.html b/HTML/NUTRIOLOGO/nutriologo.html
+--- a/HTML/NUTRIOLOGO/nutriologo.html	(revision aa4062e19a8bb91152255e3febee94a3b47a23f4)
++++ b/HTML/NUTRIOLOGO/nutriologo.html	(date 1761113146160)
+@@ -3,7 +3,7 @@
+ <head>
+     <meta charset="utf-8">
+     <title>Pagina de nutriologo</title>
+-    <link rel="stylesheet" href="Nutriologo.css">
++    <link rel="stylesheet" href="../../CSS/Nutriologo.css">
+ 
+ </head>
+ 
+@@ -40,6 +40,11 @@
+             <h3>📧 Mensajería</h3>
+             <p>Comunicación directa con los pacientes para resolver dudas rápidas.</p>
+         </a>
++
++        <a href="nutriologo_mis_pacientes.html" class="card">
++            <h3>👥 Mis Pacientes</h3>
++            <p>Agregar Pacientes, ver listado, historial, progreso y notas de todos los pacientes asignados.</p>
++        </a>
+ 
+     </div>
+ 
+Index: HTML/NUTRIOLOGO/nutriologo_nuevo_progreso.html
+===================================================================
+diff --git a/HTML/NUTRIOLOGO/nutriologo_nuevo_progreso.html b/HTML/NUTRIOLOGO/nutriologo_nuevo_progreso.html
+new file mode 100644
+--- /dev/null	(date 1761112750569)
++++ b/HTML/NUTRIOLOGO/nutriologo_nuevo_progreso.html	(date 1761112750569)
+@@ -0,0 +1,69 @@
++<!DOCTYPE html>
++<html>
++<head>
++    <meta charset="utf-8">
++    <title>Registrar Progreso | NutriLife</title>
++    <link rel="stylesheet" href="../../CSS/Nutriologo_mis_pacientes.css">
++    <style>
++        #form-container { width: 450px; max-width: 90%; background-color: #f0f0f0; padding: 20px 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); margin-top: 20px; }
++        input[type="number"], input[type="date"] { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
++        input[type="submit"] { background-color: #004d40; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px; font-weight: bold; }
++    </style>
++    <script>
++        function validarProgreso(event) {
++            const peso = document.getElementById('nuevoPeso').value.trim();
++            const altura = document.getElementById('nuevaAltura').value.trim();
++            const fecha = document.getElementById('fecha').value.trim();
++
++            if (peso === '' || altura === '' || fecha === '') {
++                alert('Todos los campos de progreso son obligatorios.');
++                event.preventDefault(); return false;
++            }
++
++            const peso_f = parseFloat(peso);
++            const altura_f = parseFloat(altura);
++
++            if (isNaN(peso_f) || peso_f < 30 || peso_f > 300) {
++                alert('El Nuevo Peso debe ser un número válido entre 30 y 300 kg.');
++                event.preventDefault(); return false;
++            }
++
++            if (isNaN(altura_f) || altura_f < 0.50 || altura_f > 3.00) {
++                alert('La Nueva Altura debe ser un número válido entre 0.50 y 3.00 metros.');
++                event.preventDefault(); return false;
++            }
++
++            return true;
++        }
++    </script>
++</head>
++<body>
++<h1><strong>NUTRILIFE</strong></h1>
++
++<div id="form-container">
++    <h2 style="color: #004d40; text-align: center;">Registrar Progreso del Paciente: [Nombre Paciente]</h2>
++
++    <form method="post" action="../../PHP/procesar_nuevo_progreso.php" onsubmit="return validarProgreso(event)">
++
++        <input type="hidden" name="paciente_id" value="101" /> <p><label>Fecha de Medición:
++        <input type="date" id="fecha" name="fecha" required max="<?php echo date('Y-m-d'); ?>" />
++    </label></p>
++
++        <p><label>Nuevo Peso (kg):
++            <input type="number" id="nuevoPeso" name="nuevoPeso" required step="0.01" min="30" max="300"
++                   placeholder="Peso actual del paciente"/>
++        </label></p>
++
++        <p><label>Nueva Altura (m):
++            <input type="number" id="nuevaAltura" name="nuevaAltura" required step="0.01" min="0.50" max="3.00"
++                   placeholder="Altura actual del paciente"/>
++        </label></p>
++
++        <p style="text-align: center; margin-top: 20px;">
++            <input type="submit" value="Guardar Progreso" />
++            <a href="nutriologo_mis_pacientes.html" style="text-decoration: none; color: #333; margin-left: 15px;">Cancelar</a>
++        </p>
++    </form>
++</div>
++</body>
++</html>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"6097de84-7984-4230-bb9f-ae407cb4edc3\" name=\"Changes\" comment=\"Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"PHP File\" />\r\n        <option value=\"TypeScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\"><![CDATA[{\r\n  \"lastFilter\": {\r\n    \"state\": \"OPEN\",\r\n    \"assignee\": \"diegofco2004\"\r\n  }\r\n}]]></component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/MizarChiquito/NutriLife.git&quot;,\r\n    &quot;accountId&quot;: &quot;2c5143ef-fcc3-4ab8-9bae-2687a424f526&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 3\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"34PAYxAwieiFXh28rc48AoFO8O7\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"JavaScript Debug.nutriologo.html.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"git-widget-placeholder\": \"recuperar__contra\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"ts.external.directory.path\": \"C:\\\\Program Files\\\\JetBrains\\\\PhpStorm 2025.2.3\\\\plugins\\\\javascript-plugin\\\\jsLanguageServicesImpl\\\\external\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File\": [\r\n      \"TEXT\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PS-252.26830.95\" />\r\n        <option value=\"bundled-php-predefined-a98d8de5180a-9b563d34894c-com.jetbrains.php.sharedIndexes-PS-252.26830.95\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1761096499763</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1761096499763</updated>\r\n    </task>\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"6097de84-7984-4230-bb9f-ae407cb4edc3\" name=\"Changes\" comment=\"Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena\" />\r\n      <created>1761104888294</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1761104888294</updated>\r\n      <workItem from=\"1761104890017\" duration=\"2580000\" />\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Codigo de cierre automatico de sesion\" />\r\n    <MESSAGE value=\"Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision aa4062e19a8bb91152255e3febee94a3b47a23f4)
++++ b/.idea/workspace.xml	(date 1761142922561)
+@@ -4,8 +4,14 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="6097de84-7984-4230-bb9f-ae407cb4edc3" name="Changes" comment="Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena">
++    <list default="true" id="6097de84-7984-4230-bb9f-ae407cb4edc3" name="Changes" comment="Se agrego el archivo php para el crud del paciente y su perfil de salud">
++      <change afterPath="$PROJECT_DIR$/HTML/GENERALES/historial_progreso.html" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/HTML/NUTRIOLOGO/nutriologo_nuevo_progreso.html" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/PHP/procesar_nuevo_progreso.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/PHP/ver_progreso.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/HTML/NUTRIOLOGO/nutriologo.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/NUTRIOLOGO/nutriologo.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/HTML/PACIENTE/Paciente.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/PACIENTE/Paciente.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -18,25 +24,26 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+-        <option value="PHP File" />
+         <option value="TypeScript File" />
++        <option value="HTML File" />
++        <option value="PHP File" />
+       </list>
+     </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="master" />
++        <entry key="$PROJECT_DIR$" value="CRUD_Paciente_perfil_Salud" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+-  "lastFilter": {
+-    "state": "OPEN",
+-    "assignee": "diegofco2004"
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;,
++    &quot;assignee&quot;: &quot;diegofco2004&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/MizarChiquito/NutriLife.git&quot;,
+@@ -46,33 +53,39 @@
+   <component name="ProblemsViewState">
+     <option name="selectedTabId" value="CurrentFile" />
+   </component>
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 3
+-}]]></component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 3
++}</component>
+   <component name="ProjectId" id="34PAYxAwieiFXh28rc48AoFO8O7" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "JavaScript Debug.nutriologo.html.executor": "Run",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "git-widget-placeholder": "recuperar__contra",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2025.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
++    &quot;JavaScript Debug.nutriologo.html.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;historial__Progreso__Pacientes&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2025.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   },
+-  "keyToStringList": {
+-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+-      "TEXT"
++  &quot;keyToStringList&quot;: {
++    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
++      &quot;TEXT&quot;
+     ]
+   }
+-}]]></component>
++}</component>
++  <component name="RecentsManager">
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\diego\OneDrive\Documentos\NUTRILIFE\NutriLife\PHP" />
++    </key>
++  </component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+@@ -97,8 +110,18 @@
+       <option name="presentableId" value="Default" />
+       <updated>1761104888294</updated>
+       <workItem from="1761104890017" duration="2580000" />
++      <workItem from="1761111560594" duration="2056000" />
++      <workItem from="1761142262188" duration="656000" />
++    </task>
++    <task id="LOCAL-00002" summary="Se agrego el archivo php para el crud del paciente y su perfil de salud">
++      <option name="closed" value="true" />
++      <created>1761111847915</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1761111847915</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -118,6 +141,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Codigo de cierre automatico de sesion" />
+     <MESSAGE value="Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena" />
++    <MESSAGE value="Se agrego el archivo php para el crud del paciente y su perfil de salud" />
++    <option name="LAST_COMMIT_MESSAGE" value="Se agrego el archivo php para el crud del paciente y su perfil de salud" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: PHP/procesar_nuevo_progreso.php
+===================================================================
+diff --git a/PHP/procesar_nuevo_progreso.php b/PHP/procesar_nuevo_progreso.php
+new file mode 100644
+--- /dev/null	(date 1761112782889)
++++ b/PHP/procesar_nuevo_progreso.php	(date 1761112782889)
+@@ -0,0 +1,68 @@
++<?php
++// procesar_nuevo_progreso.php
++
++require_once 'check_session.php';
++require_once 'conexion.php';
++global $pdo;
++
++// 1. Verificar Rol y Método
++if ($_SESSION['role'] !== 'Nutriologo') {
++    die("Acceso denegado. Solo Nutriólogos pueden registrar progreso.");
++}
++if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
++    die("Acceso no autorizado.");
++}
++
++// 2. Recepción y Sanitización de Datos
++$paciente_id = intval($_POST['paciente_id'] ?? 0);
++$fecha = trim($_POST['fecha'] ?? '');
++$nuevo_peso = floatval($_POST['nuevoPeso'] ?? 0);
++$nueva_altura = floatval($_POST['nuevaAltura'] ?? 0);
++
++// 3. Validación de campos
++if ($paciente_id <= 0 || empty($fecha) || $nuevo_peso < 30 || $nuevo_peso > 300 || $nueva_altura < 0.50 || $nueva_altura > 3.00) {
++    die("<h1>❌ Error de Validación</h1><p>Datos faltantes o fuera de rango.</p>");
++}
++
++// 4. Iniciar Transacción Atómica
++$pdo->beginTransaction();
++
++try {
++    // 4.1. INSERCIÓN del nuevo progreso (CREATE)
++    $sql_insert_progress = "INSERT INTO progress (user_id, measurement_date, weight, height) 
++                            VALUES (:user_id, :fecha, :weight, :height)";
++    $stmt_insert = $pdo->prepare($sql_insert_progress);
++
++    $stmt_insert->bindParam(':user_id', $paciente_id, PDO::PARAM_INT);
++    $stmt_insert->bindParam(':fecha', $fecha);
++    $stmt_insert->bindParam(':weight', $nuevo_peso);
++    $stmt_insert->bindParam(':height', $nueva_altura);
++    $stmt_insert->execute();
++
++    // 4.2. ACTUALIZACIÓN de peso y altura en la tabla principal de users (UPDATE)
++    $sql_update_user = "UPDATE users SET weight = :weight, height = :height WHERE id = :user_id";
++    $stmt_update = $pdo->prepare($sql_update_user);
++
++    $stmt_update->bindParam(':weight', $nuevo_peso);
++    $stmt_update->bindParam(':height', $nueva_altura);
++    $stmt_update->bindParam(':user_id', $paciente_id, PDO::PARAM_INT);
++    $stmt_update->execute();
++
++    // 4.3. Confirmar la transacción
++    $pdo->commit();
++
++    // Redirección con éxito (Ej. Volver a la lista de pacientes)
++    $msg = urlencode("✅ Progreso registrado y datos del paciente actualizados.");
++    header("Location: ../HTML/NUTRIOLOGO/nutriologo_mis_pacientes.html?status=success&msg=" . $msg);
++    exit();
++
++} catch (PDOException $e) {
++    // 4.4. Revertir Transacción en caso de error
++    if ($pdo->inTransaction()) {
++        $pdo->rollBack();
++    }
++    $msg = urlencode("❌ Error al registrar progreso: " . $e->getMessage());
++    header("Location: ../HTML/NUTRIOLOGO/nutriologo_mis_pacientes.html?status=error&msg=" . $msg);
++    exit();
++}
++?>
+\ No newline at end of file
+Index: HTML/GENERALES/historial_progreso.html
+===================================================================
+diff --git a/HTML/GENERALES/historial_progreso.html b/HTML/GENERALES/historial_progreso.html
+new file mode 100644
+--- /dev/null	(date 1761112806164)
++++ b/HTML/GENERALES/historial_progreso.html	(date 1761112806164)
+@@ -0,0 +1,42 @@
++<!DOCTYPE html>
++<html>
++<head>
++    <meta charset="utf-8">
++    <title>Historial de Progreso | NutriLife</title>
++    <link rel="stylesheet" href="../../CSS/Nutriologo_mis_pacientes.css"> <style>
++    .progress-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
++    .progress-table th, .progress-table td { border: 1px solid #ccc; padding: 10px; text-align: left; }
++    .progress-table th { background-color: #e0e0e0; font-weight: bold; }
++    .progress-table tr:nth-child(even) { background-color: #f9f9f9; }
++</style>
++</head>
++<body>
++<h1><strong>NUTRILIFE</strong></h1>
++
++<div id="dashboard-container">
++    <h2 id="title-progreso">Historial de Progreso | Paciente [Nombre]</h2>
++
++    <a href="#" id="btn-nuevo-progreso" style="display: none; background-color: #00796b; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">
++        ➕ Registrar Nuevo Progreso
++    </a>
++
++    <div id="progress-list-container">
++        <table class="progress-table">
++            <thead>
++            <tr>
++                <th>Fecha</th>
++                <th>Peso (kg)</th>
++                <th>Altura (m)</th>
++                <th>Cambio Peso</th>
++            </tr>
++            </thead>
++            <tbody id="progress-table-body">
++            <tr><td colspan="4" style="text-align: center;">Cargando historial...</td></tr>
++            </tbody>
++        </table>
++    </div>
++
++    <p style="margin-top: 20px;"><a href="#" onclick="history.back(); return false;">&larr; Volver</a></p>
++</div>
++</body>
++</html>
+\ No newline at end of file
+Index: PHP/ver_progreso.php
+===================================================================
+diff --git a/PHP/ver_progreso.php b/PHP/ver_progreso.php
+new file mode 100644
+--- /dev/null	(date 1761112837700)
++++ b/PHP/ver_progreso.php	(date 1761112837700)
+@@ -0,0 +1,107 @@
++<?php
++// ver_progreso.php
++
++require_once 'check_session.php';
++require_once 'conexion.php';
++global $pdo;
++
++$user_role = $_SESSION['role'];
++$session_user_id = $_SESSION['user_id'];
++$paciente_id = $session_user_id; // Por defecto, ve su propio progreso
++
++// 1. Determinar el Paciente ID a consultar
++if ($user_role === 'Nutriologo') {
++    // Si es Nutriólogo, el ID del paciente viene por GET (ej. desde la lista)
++    $paciente_id = intval($_GET['paciente_id'] ?? $session_user_id);
++
++    // [Pendiente de implementar: Verificación de que el Nutriólogo está asignado al paciente]
++    // Por ahora, asumimos que puede ver el progreso si tiene el ID.
++
++} elseif ($user_role !== 'Paciente') {
++    // Solo Nutriólogo y Paciente tienen acceso
++    header("Location: ../HTML/GENERALES/login.html?status=error&msg=" . urlencode("Acceso no autorizado."));
++    exit();
++}
++
++// 2. Obtener Nombre del Paciente para el Título
++$sql_paciente = "SELECT first_name, last_name FROM users WHERE id = :id";
++$stmt_paciente = $pdo->prepare($sql_paciente);
++$stmt_paciente->bindParam(':id', $paciente_id, PDO::PARAM_INT);
++$stmt_paciente->execute();
++$paciente_data = $stmt_paciente->fetch(PDO::FETCH_ASSOC);
++
++if (!$paciente_data) {
++    die("Paciente no encontrado.");
++}
++$paciente_nombre_completo = htmlspecialchars($paciente_data['first_name'] . ' ' . $paciente_data['last_name']);
++
++// 3. Obtener Historial de Progreso (Más reciente primero)
++$sql_progress = "SELECT measurement_date, weight, height FROM progress 
++                 WHERE user_id = :user_id 
++                 ORDER BY measurement_date DESC"; // El más reciente primero
++$stmt_progress = $pdo->prepare($sql_progress);
++$stmt_progress->bindParam(':user_id', $paciente_id, PDO::PARAM_INT);
++$stmt_progress->execute();
++$progress_entries = $stmt_progress->fetchAll(PDO::FETCH_ASSOC);
++
++// 4. Procesar y Renderizar la tabla
++$html_rows = '';
++$peso_anterior = null; // Para calcular la diferencia
++
++if (empty($progress_entries)) {
++    $html_rows = '<tr><td colspan="4" style="text-align: center;">No hay historial de progreso registrado.</td></tr>';
++} else {
++    foreach ($progress_entries as $entry) {
++        $peso_actual = floatval($entry['weight']);
++        $altura_actual = floatval($entry['height']);
++        $fecha_formato = date('d/m/Y', strtotime($entry['measurement_date']));
++
++        $cambio_peso = 'N/A';
++        $style_cambio = '';
++
++        if ($peso_anterior !== null) {
++            $diferencia = $peso_actual - $peso_anterior;
++            $signo = ($diferencia > 0) ? '+' : '';
++            $cambio_peso = $signo . number_format($diferencia, 2) . ' kg';
++            $style_cambio = ($diferencia > 0) ? 'style="color: red; font-weight: bold;"' : 'style="color: green; font-weight: bold;"';
++        }
++
++        $html_rows .= sprintf(
++            '<tr><td>%s</td><td>%.2f kg</td><td>%.2f m</td><td %s>%s</td></tr>',
++            $fecha_formato,
++            $peso_actual,
++            $altura_actual,
++            $style_cambio,
++            $cambio_peso
++        );
++
++        $peso_anterior = $peso_actual; // El peso actual se convierte en el anterior para la siguiente fila
++    }
++    // NOTA: El cálculo de cambio de peso en la BD se hace del registro anterior. Como se itera en orden DESC, el último registro es el más antiguo.
++    // El peso anterior del bucle es, de hecho, el peso *posterior* en el tiempo.
++}
++
++// 5. Cargar y Reemplazar Marcadores en el HTML
++$html_content = file_get_contents('../HTML/GENERALES/historial_progreso.html');
++
++// Título
++$html_content = str_replace('[Nombre]', $paciente_nombre_completo, $html_content);
++
++// Botón de nuevo progreso (solo visible para Nutriólogo y apuntando al paciente correcto)
++if ($user_role === 'Nutriologo') {
++    $html_content = str_replace(
++        '<a href="#" id="btn-nuevo-progreso" style="display: none;',
++        sprintf('<a href="../NUTRIOLOGO/nutriologo_nuevo_progreso.html?paciente_id=%d" id="btn-nuevo-progreso" style="display: inline-block;', $paciente_id),
++        $html_content
++    );
++}
++// Ocultar botón de nuevo progreso para Paciente
++$html_content = str_replace('id="btn-nuevo-progreso"', 'id="btn-nuevo-progreso" style="display: none;"', $html_content);
++
++
++// Contenido de la tabla
++$html_content = str_replace('<tr><td colspan="4" style="text-align: center;">Cargando historial...</td></tr>', $html_rows, $html_content);
++
++// 6. Mostrar el HTML
++echo $html_content;
++?>
+\ No newline at end of file
+Index: HTML/PACIENTE/Paciente.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta charset=\"utf-8\">\r\n    <title>Pagina de paciente</title>\r\n    <link rel=\"stylesheet\" href=\"../../CSS/paciente.css\">\r\n\r\n</head>\r\n\r\n<body>\r\n<h1><strong>NUTRILIFE</strong></h1>\r\n\r\n<div id=\"dashboard-container\">\r\n\r\n    <h2 id=\"paciente-title\">¡Bienvenido!</h2>\r\n\r\n    <div class=\"card-menu\">\r\n\r\n        <a href=\"#\" class=\"card\">\r\n            <h3>\uD83C\uDF7D\uFE0F Mi Plan Semanal</h3>\r\n            <p>Consulta tus dietas, recetas y porciones asignadas por tu nutriólogo.</p>\r\n        </a>\r\n\r\n        <a href=\"#\" class=\"card\">\r\n            <h3>\uD83D\uDCC8 Mi Progreso</h3>\r\n            <p>Revisa tus gráficas de peso, mediciones y metas logradas hasta ahora.</p>\r\n        </a>\r\n\r\n        <a href=\"Paciente_perfil_salud.html\" class=\"card\">\r\n            <h3>\uD83D\uDCAC Contactar Nutriólogo</h3>\r\n            <p>Programa una cita o envía un mensaje directo a tu especialista.</p>\r\n        </a>\r\n\r\n        <a href=\"\" class=\"card\">\r\n            <h3>⚙\uFE0F Mi Perfil</h3>\r\n            <p>Actualiza tus datos personales, contraseña y preferencias.</p>\r\n        </a>\r\n\r\n    </div>\r\n\r\n    <nav id=\"logout-area\" style=\"text-align: right; margin-top: 20px;\"></nav>\r\n\r\n</div>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/HTML/PACIENTE/Paciente.html b/HTML/PACIENTE/Paciente.html
+--- a/HTML/PACIENTE/Paciente.html	(revision aa4062e19a8bb91152255e3febee94a3b47a23f4)
++++ b/HTML/PACIENTE/Paciente.html	(date 1761112883434)
+@@ -36,6 +36,11 @@
+             <p>Actualiza tus datos personales, contraseña y preferencias.</p>
+         </a>
+ 
++        <a href="../../PHP/ver_progreso.php" class="card">
++            <h3>📈 Mi Progreso</h3>
++            <p>Revisa tus gráficas de peso, mediciones y metas logradas hasta ahora.</p>
++        </a>
++
+     </div>
+ 
+     <nav id="logout-area" style="text-align: right; margin-top: 20px;"></nav>

@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6097de84-7984-4230-bb9f-ae407cb4edc3" name="Changes" comment="Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6097de84-7984-4230-bb9f-ae407cb4edc3" name="Changes" comment="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,15 +16,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="PHP File" />
         <option value="TypeScript File" />
+        <option value="HTML File" />
+        <option value="PHP File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="historialProgresoPacientesV2" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,10 +55,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "JavaScript Debug.nutriologo.html.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "historialProgresoV3",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -98,7 +98,15 @@
       <updated>1761104888294</updated>
       <workItem from="1761104890017" duration="2580000" />
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD">
+      <option name="closed" value="true" />
+      <created>1761144873051</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761144873051</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +126,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Codigo de cierre automatico de sesion" />
     <MESSAGE value="Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena" />
+    <MESSAGE value="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD" />
+    <option name="LAST_COMMIT_MESSAGE" value="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD" />
   </component>
 </project>
