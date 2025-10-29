@@ -1,128 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <title>Gestión de Pacientes | Nutriólogo FOOD-RE</title>
-    <link rel="stylesheet" href="/NutriLife/CSS/Nutriologo_mis_pacientes.css">
+    <link rel="stylesheet" href="../../CSS/Nutriologo_mis_pacientes.css">
+    <script src="JAVA SCRIP/notificacion_registro.js"></script>
     <style>
-
-        /* Contenedor principal para la lista */
-        #list-container {
-            width: 100%;
-            margin-top: 30px;
+        body {
+            font-family: Arial, sans-serif;
+            background: lightsteelblue;
         }
-
-        /* Estilos del botón de acción */
+        #dashboard-container {
+            width: 90%;
+            max-width: 900px;
+            margin: 20px auto;
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #004d40;
+        }
         #add-patient-button {
-            background-color: #004d40; /* Verde oscuro */
+            display: inline-block;
+            margin: 10px 0;
+            padding: 8px 12px;
+            background: #004d40;
             color: white;
-            padding: 10px 20px;
-            border: none;
             border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 20px;
-            display: inline-block; /* Permite que sea un botón de ancho fijo */
-            text-decoration: none; /* Si se usa un <a> */
-            transition: background-color 0.3s;
+            text-decoration: none;
         }
-
         #add-patient-button:hover {
-            background-color: #00796b; /* Verde ligeramente más claro al pasar el ratón */
+            background: #00695c;
         }
-
-        /* Estilos básicos para la tabla de pacientes */
-        .patient-table {
+        table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
         }
-
-        .patient-table th, .patient-table td {
+        th, td {
             border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
+            padding: 8px;
+            text-align: center;
         }
-
-        .patient-table th {
-            background-color: #e0e0e0;
+        th {
+            background: #004d40;
+            color: white;
+        }
+        .accion {
+            color: #004d40;
+            text-decoration: none;
             font-weight: bold;
-            color: #333;
         }
-
-        .patient-table tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .accion:hover {
+            text-decoration: underline;
         }
-
     </style>
-
-    <script src="../../JAVA SCRIP/notificacion_registro.js"></script>
 </head>
-
 <body>
+
 <h1><strong>NUTRILIFE</strong></h1>
-
 <div id="dashboard-container">
+    <h2>Panel del Nutriólogo</h2>
+    <h3>Gestión de Pacientes</h3>
 
-    <h2>Panel de Gestión | Nutriólogo [Nombre]</h2>
-    <h2 style="color: #004d40;">Gestión de Pacientes</h2>
+    <a href="NUTRIOLOGO/nutriologo_agregar_pacientes.html" id="add-patient-button">➕ Agregar Nuevo Paciente</a>
 
-    <a href="nutriologo_agregar_pacientes.html" id="add-patient-button">
-        ➕ Agregar Nuevo Paciente
-    </a>
-
-    <div id="notification-message" style="display: none; margin: 15px 0; padding: 10px; border-radius: 5px; text-align: center; font-weight: bold;">
+    <div id="notification-message"
+         style="display:none; padding:10px; border-radius:5px; margin:10px 0; font-weight:bold;">
     </div>
 
-    <div id="list-container">
-
-        <table class="patient-table">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre Completo</th>
-                <th>Email</th>
-                <th>Peso</th>
-                <th>Altura</th>
-                <th>Progreso</th>
-                <th>Acciones</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>101</td>
-                <td>Ana Gómez Pérez</td>
-                <td>ana.gomez@mail.com</td>
-                <td>70 kg</td>
-                <td>1.65 cm</td>
-                <td>+3kg / Ver Progreso</td>
-                <td><a href="#">Ver Plan</a> | <a href="#">Editar</a></td>
-            </tr>
-            <tr>
-                <td>102</td>
-                <td>Carlos Ruiz Díaz</td>
-                <td>carlos.rd@mail.com</td>
-                <td>80 kg</td>
-                <td>1.80 cm</td>
-                <td>-5kg / Ver Progreso</td>
-                <td><a href="#">Ver Plan</a> | <a href="#">Editar</a></td>
-            </tr>
-            <tr>
-                <td>103</td>
-                <td>Sofía Hernández</td>
-                <td>sofia.h@mail.com</td>
-                <td>80 kg</td>
-                <td>1.70 cm</td>
-                <td>Sin datos</td>
-                <td><a href="#">Crear Plan</a> | <a href="#">Editar</a></td>
-            </tr>
-            </tbody>
-        </table>
-
-    </div>
-
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Peso</th>
+            <th>Altura</th>
+            <th>Progreso</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody id="tabla-pacientes">
+        <!-- Aquí se insertarán los pacientes desde PHP -->
+        </tbody>
+    </table>
 </div>
+
+<script>
+    // Cargar pacientes automáticamente
+    document.addEventListener("DOMContentLoaded", () => {
+        fetch("/PHP/cargar_pacientes.php")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("tabla-pacientes").innerHTML = data;
+            })
+            .catch(error => {
+                console.error("Error al cargar pacientes:", error);
+                document.getElementById("tabla-pacientes").innerHTML =
+                    "<tr><td colspan='6'>Error al cargar los pacientes.</td></tr>";
+            });
+    });
+</script>
+
 </body>
 </html>
+

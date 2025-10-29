@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Creador de Planes</title>
+    <link rel="stylesheet" href="CSS/creador_planes.css">
+</head>
+<body>
+<h1>Creador de Planes</h1>
+
+<div id="dashboard-container">
+    <!-- Inputs del plan -->
+    <input type="text" id="nombre_plan" placeholder="Nombre del Plan">
+    <textarea id="descripcion_plan" placeholder="Descripción"></textarea>
+
+    <!-- Botón para cargar plantillas -->
+    <button id="cargar_plantillas" class="cta-secundario">Cargar Plantillas</button>
+    <div id="plantillas_listado"></div>
+
+    <!-- Calendario semanal -->
+    <div id="calendario">
+        <div class="dia" data-dia="Lunes"><h4>Lunes</h4></div>
+        <div class="dia" data-dia="Martes"><h4>Martes</h4></div>
+        <div class="dia" data-dia="Miércoles"><h4>Miércoles</h4></div>
+        <div class="dia" data-dia="Jueves"><h4>Jueves</h4></div>
+        <div class="dia" data-dia="Viernes"><h4>Viernes</h4></div>
+        <div class="dia" data-dia="Sábado"><h4>Sábado</h4></div>
+        <div class="dia" data-dia="Domingo"><h4>Domingo</h4></div>
+    </div>
+
+    <!-- Botones principales -->
+    <button id="abrir_alimentos" class="cta-primario">Agregar Alimento</button>
+    <button id="guardar_plan" class="cta-primario">Guardar Plan</button>
+    <button id="asignar_plan" class="cta-secundario">Asignar a Paciente</button>
+
+    <div id="mensaje_plan"></div>
+</div>
+
+<!-- Modal de búsqueda de alimentos -->
+<div id="modal_alimentos" class="modal">
+    <h3>Buscar Alimentos</h3>
+    <input type="text" id="buscar_alimento" placeholder="Buscar alimento">
+    <div id="resultados_alimentos"></div>
+    <button onclick="cerrarModalAlimentos()">Cerrar</button>
+</div>
+
+<!-- Modal de búsqueda de paciente -->
+<div id="modal_paciente" class="modal">
+    <h3>Buscar Paciente</h3>
+    <input type="text" id="buscar_paciente" placeholder="Buscar paciente">
+    <div id="resultados_pacientes"></div>
+    <button onclick="cerrarModalPaciente()">Cerrar</button>
+</div>
+
+<script src="JAVA SCRIP/creador_planes.js"></script>
+</body>
+</html>
+
+
+
