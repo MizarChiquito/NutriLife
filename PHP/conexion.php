@@ -11,7 +11,7 @@ $db   = "foodre_db";
 $user = "root";
 $pass = "";            
 
-// Variable $pdo para usar en otros scripts. Inicialmente nula.
+// Variable $pdo para usar en otros scripts.
 $pdo = null;
 
 try {
