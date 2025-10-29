@@ -9,7 +9,7 @@ $host = "localhost";
 $port = "3306";
 $db   = "foodre_db";        
 $user = "root";
-$pass = "3294";            
+$pass = "";            
 
 // Variable $pdo para usar en otros scripts. Inicialmente nula.
 $pdo = null;

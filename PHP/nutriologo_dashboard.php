@@ -20,7 +20,7 @@ $html_content = file_get_contents('../HTML/NUTRIOLOGO/nutriologo.html');
 
 // Inyectar el saludo al usuario en el H2 (usando el método de reemplazo de cadenas que establecimos)
 $new_title_h2 = "<h2>¡Bienvenido, Nutriologo {$user_name}!</h2>";
-$html_content = str_replace('<h2 id="nutriolgo-title">¡Bienvenido!</h2>', $new_title_h2, $html_content);
+$html_content = str_replace('<h2 id="nutriologo-title">¡Bienvenido!</h2>', $new_title_h2, $html_content);
 
 // Inyectar el enlace de cerrar sesión en el NAV
 $html_content = str_replace('<nav id="logout-area" style="text-align: right; margin-top: 20px;"></nav>',
