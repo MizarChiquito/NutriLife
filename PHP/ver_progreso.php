@@ -19,7 +19,7 @@ if ($user_role === 'Nutriologo') {
 
 } elseif ($user_role !== 'Paciente') {
     // Solo Nutriólogo y Paciente tienen acceso
-    header("Location: ../HTML/GENERALES/login.html?status=error&msg=" . urlencode("Acceso no autorizado."));
+    header("Location: /Nutrilife/HTML/GENERALES/login.html?status=error&msg=" . urlencode("Acceso no autorizado."));
     exit();
 }
 

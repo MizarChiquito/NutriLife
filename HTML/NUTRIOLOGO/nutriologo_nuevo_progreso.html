@@ -43,7 +43,7 @@
 <div id="form-container">
     <h2 style="color: #004d40; text-align: center;">Registrar Progreso del Paciente: [Nombre Paciente]</h2>
 
-    <form method="post" action="../../PHP/procesar_nuevo_progreso.php" onsubmit="return validarProgreso(event)">
+    <form method="post" action="/Nutrilife/PHP/procesar_nuevo_progreso.php" onsubmit="return validarProgreso(event)">
 
         <input type="hidden" name="paciente_id" value="101" /> <p><label>Fecha de Medición:
         <input type="date" id="fecha" name="fecha" required max="<?php echo date('Y-m-d'); ?>" />

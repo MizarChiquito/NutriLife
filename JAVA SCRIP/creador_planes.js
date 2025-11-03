@@ -83,7 +83,7 @@ document.getElementById('guardar_plan').addEventListener('click', async ()=>{
     });
 
     try{
-        const response = await fetch('http://localhost/NutriLife/NutriLife/PHP/planes_plantillas.php', {
+        const response = await fetch('C:/xampp/htdocs/Nutrilife/PHP/planes_plantillas.php', {
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({nombre, descripcion, detalle})
@@ -101,7 +101,7 @@ document.getElementById('guardar_plan').addEventListener('click', async ()=>{
 // ----- Cargar plantillas -----
 document.getElementById('cargar_plantillas').addEventListener('click', async ()=>{
     try{
-        const response = await fetch('http://localhost/NutriLife/NutriLife/PHP/planes_plantillas.php');
+        const response = await fetch('C:/xampp/htdocs/Nutrilife/PHP/planes_plantillas.php');
         const plantillas = await response.json();
         const cont = document.getElementById('plantillas_listado');
         cont.innerHTML='';
@@ -156,7 +156,7 @@ document.getElementById('buscar_paciente').addEventListener('input', async funct
     cont.innerHTML='';
 
     try{
-        const response = await fetch('http://localhost/NutriLife/NutriLife/PHP/pacientes_nutriologo.php');
+        const response = await fetch('C:/xampp/htdocs/Nutrilife/PHP/pacientes_nutriologo.php');
         const pacientes = await response.json();
 
         const resultados = pacientes.filter(p=> (p.first_name + ' ' + p.last_name).toLowerCase().includes(filtro));
@@ -179,7 +179,7 @@ async function asignarPlanPaciente(pacienteId){
     if(!planId){ alert("Primero guarda o selecciona un plan"); return; }
 
     try{
-        const response = await fetch('http://localhost/NutriLife/NutriLife/PHP/asignar_planes.php', {
+        const response = await fetch('C:/xampp/htdocs/Nutrilife/PHP/signar_planes.php', {
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({ paciente_id: pacienteId, plan_id: planId })

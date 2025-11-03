@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>Gestión de Pacientes | Nutriólogo FOOD-RE</title>
-    <link rel="stylesheet" href="../../CSS/Nutriologo_mis_pacientes.css">
-    <script src="JAVA SCRIP/notificacion_registro.js"></script>
+    <link rel="stylesheet" href="/NutriLife/CSS/Nutriologo_mis_pacientes.css">
+    <script src="/Nutrilife/JAVA SCRIP/notificacion_registro.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,7 +65,7 @@
     <h2>Panel del Nutriólogo</h2>
     <h3>Gestión de Pacientes</h3>
 
-    <a href="NUTRIOLOGO/nutriologo_agregar_pacientes.html" id="add-patient-button">➕ Agregar Nuevo Paciente</a>
+    <a href="nutriologo_agregar_pacientes.html" id="add-patient-button">➕ Agregar Nuevo Paciente</a>
 
     <div id="notification-message"
          style="display:none; padding:10px; border-radius:5px; margin:10px 0; font-weight:bold;">
@@ -91,7 +91,7 @@
 <script>
     // Cargar pacientes automáticamente
     document.addEventListener("DOMContentLoaded", () => {
-        fetch("/PHP/cargar_pacientes.php")
+        fetch("/Nutrilife/PHP/cargar_pacientes.php")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("tabla-pacientes").innerHTML = data;

@@ -1,7 +1,9 @@
 <?php
 // check_session.php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Tiempo de expiración: 1 hora de inactividad
 $expire_time = 3600;
@@ -11,6 +13,10 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['role'])) {
     $msg = urlencode("Acceso denegado. Por favor, inicie sesión.");
     header("Location: ../HTML/GENERALES/login.html?status=error&msg=" . $msg);
     exit();
+}
+
+if ($_SESSION['role'] === 'Nutriologo') {
+    $nutriologo_id = $_SESSION['user_id']; // ID del nutriólogo actual
 }
 
 // 2. EXCEPCIÓN: Si el rol es Administrador, saltamos la verificación de inactividad.

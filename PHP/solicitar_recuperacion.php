@@ -70,7 +70,7 @@ try {
             $mail->isHTML(true);
             $mail->CharSet = 'UTF-8';
 
-            $base_url = "http://localhost/Nutrilife/Nutrilife/PHP/";
+            $base_url = "http://localhost/Nutrilife/PHP/";
 
             $reset_link = $base_url . "recuperar_contrasena_form.php?token=" . urlencode($token);
 
