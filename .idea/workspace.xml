@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6097de84-7984-4230-bb9f-ae407cb4edc3" name="Changes" comment="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD" />
-    <list default="true" id="6097de84-7984-4230-bb9f-ae407cb4edc3" name="Changes" comment="Se agregaron los archivos PHP y CSS para el feature de recuperar contrasena">
-      <change afterPath="$PROJECT_DIR$/HTML/GENERALES/historial_progreso.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HTML/NUTRIOLOGO/nutriologo_nuevo_progreso.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PHP/procesar_nuevo_progreso.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PHP/ver_progreso.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/NutriLife.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NutriLife.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="6097de84-7984-4230-bb9f-ae407cb4edc3" name="Changes" comment="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD">
+      <change afterPath="$PROJECT_DIR$/PHP/nutriologo_actualizar_personal.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PHP/nutriologo_perfil_personal.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PHP/nutriologo_perfil_personal_vista.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/NUTRIOLOGO/nutriologo.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/NUTRIOLOGO/nutriologo.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,27 +66,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.nutriologo.html.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "historialProgresoV3",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2025.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.nutriologo.html.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/NutriLife&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2025.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -115,6 +113,10 @@
       <updated>1761104888294</updated>
       <workItem from="1761104890017" duration="2580000" />
       <workItem from="1761143172200" duration="612000" />
+      <workItem from="1761758725287" duration="405000" />
+      <workItem from="1761764642820" duration="468000" />
+      <workItem from="1761766766307" duration="821000" />
+      <workItem from="1762142975148" duration="440000" />
     </task>
     <task id="LOCAL-00002" summary="se agregaron los archivos para poder visualizar el progreso del paciente, faltan detalles aun, lo hice de nuevo porque humberto hizo push en el master y mando por un tubo mi anterior push XDDD">
       <option name="closed" value="true" />
