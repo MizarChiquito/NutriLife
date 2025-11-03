@@ -1,19 +1,18 @@
 <?php
 // cargar_pacientes.php
-
 require_once "conexion.php";
 require_once "check_session.php";
 
 global $pdo;
 
-// 1️ Verificar sesión
+// Verificar sesión y rol
 if ($_SESSION['role'] !== 'Nutriologo') {
     die("<h1>⚠️ Acceso denegado</h1><p>No tienes permiso para acceder a esta sección.</p>");
 }
 
 $nutriologo_id = $_SESSION['user_id'];
 
-// 2️ Consultar todos los pacientes del nutriólogo
+// Consultar todos los pacientes del nutriólogo
 $stmt = $pdo->prepare("
     SELECT 
         u.id AS paciente_id,
@@ -33,12 +32,12 @@ if (!$pacientes) {
     exit();
 }
 
-// 3️ Por cada paciente, calcular el progreso reciente
+// Por cada paciente, calcular el progreso reciente
 foreach ($pacientes as $p) {
     $paciente_id = $p['paciente_id'];
     $peso_actual = floatval($p['weight']);
 
-    // Obtener el último progreso registrado (más reciente)
+    // Último progreso registrado
     $stmtUltimo = $pdo->prepare("
         SELECT peso, fecha 
         FROM progresos 
@@ -49,9 +48,9 @@ foreach ($pacientes as $p) {
     $stmtUltimo->execute([':pid' => $paciente_id]);
     $ultimo = $stmtUltimo->fetch(PDO::FETCH_ASSOC);
 
-    // Obtener el progreso anterior al último
+    // Progreso anterior al último
     $stmtAnterior = $pdo->prepare("
-        SELECT peso, fecha 
+        SELECT peso 
         FROM progresos 
         WHERE paciente_id = :pid 
         ORDER BY fecha DESC, id DESC 
@@ -60,12 +59,11 @@ foreach ($pacientes as $p) {
     $stmtAnterior->execute([':pid' => $paciente_id]);
     $anterior = $stmtAnterior->fetch(PDO::FETCH_ASSOC);
 
-    // Determinar valores de comparación
+    // Determinar referencia
     if ($ultimo && $anterior) {
         $peso_ref = floatval($anterior['peso']);
         $fecha_ref = $ultimo['fecha'];
     } elseif ($ultimo) {
-        // Si solo hay un progreso, comparar con peso inicial (users.weight guardado antes)
         $peso_ref = $peso_actual;
         $fecha_ref = $ultimo['fecha'];
     } else {
@@ -73,23 +71,14 @@ foreach ($pacientes as $p) {
         $fecha_ref = "—";
     }
 
-    // Calcular diferencia
+    // Diferencia y color
     $diff = $peso_actual - $peso_ref;
     $diff_rounded = round($diff, 2);
+    $color = "black"; $signo = "";
 
-    // Determinar color y signo
-    $color = "black";
-    $signo = "";
+    if ($diff_rounded > 0.1) { $color = "red"; $signo = "+"; }
+    elseif ($diff_rounded < -0.1) { $color = "green"; $signo = ""; }
 
-    if ($diff_rounded > 0.1) {
-        $color = "red";
-        $signo = "+";
-    } elseif ($diff_rounded < -0.1) {
-        $color = "green";
-        $signo = ""; // bajar de peso no necesita "+"
-    }
-
-    // Si no hay progresos previos
     $texto_progreso = ($fecha_ref === "—")
         ? "<span style='color:gray;'>Sin registros</span>"
         : "<span style='color:{$color};'>{$signo}{$diff_rounded} kg</span> ({$fecha_ref})";
@@ -101,11 +90,7 @@ foreach ($pacientes as $p) {
             <td>{$p['weight']} kg</td>
             <td>{$p['height']} m</td>
             <td>{$texto_progreso}</td>
-            <td><a href='nutriologo_nuevo_progreso.html?paciente_id={$paciente_id}'>Registrar Progreso</a></td>
-        </tr>";
+            <td><a href='nutriologo_nuevo_progreso.html?paciente_id={$paciente_id}' class='accion'>➕ Nuevo Progreso</a></td>
+          </tr>";
 }
 ?>
-
-
-
-

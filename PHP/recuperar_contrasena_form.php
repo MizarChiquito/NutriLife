@@ -24,7 +24,7 @@ if (empty($token)) {
 <head>
     <meta charset="utf-8">
     <title>Restablecer Contraseña</title>
-    <link rel="stylesheet" href="../CSS/recuperar_contraseña.css">
+    <link rel="stylesheet" href="/Nutrilife/CSS/recuperar_contraseña.css">
 </head>
 <body>
 <h1><strong>NUTRILIFE</strong></h1>

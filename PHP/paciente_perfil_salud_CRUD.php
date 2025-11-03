@@ -6,7 +6,7 @@ require_once 'conexion.php'; // Asegúrate de que esta ruta define $pdo
 
 // 1. Verificar Autenticación
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.html");
+    header("Location: ../HTML/GENERALES/login.html");
     exit();
 }
 
